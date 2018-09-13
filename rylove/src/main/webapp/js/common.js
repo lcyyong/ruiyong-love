@@ -42,24 +42,4 @@
     //    $('html').sakura();
     //});
 	
-	function submitRsvp(){
-		var myform = $('#rsvpForm');
-		var fd = new FormData(myform );
-		
-		$.ajax({
-			url: "/index",
-			data: fd,
-			cache: false,
-			processData: false,
-			contentType: false,
-			type: 'POST',
-			success: function (data) {
-				$('#result').html("Hello, " + data.name);
-				// do something with the result
-			}
-		});
-		
-		$.getJSON('/index', function(data) {
-		$('#result').html("Hello 2, " + data.name);
-});
-	}
+	
