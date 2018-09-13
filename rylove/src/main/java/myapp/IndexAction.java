@@ -26,8 +26,8 @@ public class IndexAction extends HttpServlet {
   public void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws IOException {
 		  
-	String fullName = (String)req.getParameter("fullName");
-    System.out.println("---->" + fullName);
+	//String fullName = (String)req.getParameter("fullName");
+    //System.out.println("---->" + fullName);
 	
 	resp.setContentType("text/plain");
     resp.getWriter().println("{ \"name\": "+fullName+" }");
