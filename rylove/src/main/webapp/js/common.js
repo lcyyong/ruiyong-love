@@ -51,14 +51,18 @@
 			$('#result2').html("Hello 2, " + data.name);
 		});
 		
+		$.postJSON('/index', myform.serialize(), function(data) {
+			$('#result1').html("Hello 2, " + data.name);
+		});
+		/*
 		$.ajax({
-        url: '/index',
+        url: '/index/',
         type: 'post',
         dataType: 'json',
-        data: $('#rsvpForm').serialize(),
+        data: myform.serialize(),
         success: function(data) {
 		   $('#result').html("Hello 1, " + data.name);
-		}
+		}*/
     });
 	}
 	
