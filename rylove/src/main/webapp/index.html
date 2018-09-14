@@ -232,30 +232,6 @@
 	<script src="js/countdown.js"></script>
 	<script src="js/jquery-sakura.min.js"></script>
 	<script src="js/common.js"></script>
-	<script type="javascript/text">
-		function submitRsvp(){
-			
-			var myform = $('#rsvpForm');
-			var fd = new FormData(myform );
-			
-			$.getJSON('/index', function(data) {
-				$('#result').html("Hello 2, " + data.name);
-			});
-			
-			$.ajax({
-				url: "/index",
-				data: fd,
-				cache: false,
-				processData: false,
-				contentType: false,
-				type: 'POST',
-				success: function (data) {
-					$('#result').html("Hello, " + data.name);
-					// do something with the result
-				}
-			});
-		}
-	</script>
 	
 <script 
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkVUMV9d9axvXtgreVE8CQwM4TyLo5-bo&callback=initMap&output=embed">
