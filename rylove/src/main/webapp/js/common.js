@@ -62,7 +62,7 @@
         data: myform.serialize(),
         success: function(data) {
 		   $('#result').html("Hello 1, " + data.name);
-		}*/
-    });
+		}
+		});*/
 	}
 	
