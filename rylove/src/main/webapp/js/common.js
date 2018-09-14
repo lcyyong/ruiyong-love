@@ -48,20 +48,17 @@
 		var fd = new FormData(myform );
 		
 		$.getJSON('/index', function(data) {
-			$('#result').html("Hello 2, " + data.name);
+			$('#result2').html("Hello 2, " + data.name);
 		});
 		
-		/*$.ajax({
-			url: "/index",
-			data: fd,
-			cache: false,
-			processData: false,
-			contentType: false,
-			type: 'POST',
-			success: function (data) {
-				$('#result').html("Hello, " + data.name);
-				// do something with the result
-			}
-		});*/
+		$.ajax({
+        url: '/index',
+        type: 'post',
+        dataType: 'json',
+        data: $('#rsvpForm').serialize(),
+        success: function(data) {
+		   $('#result').html("Hello 1, " + data.name);
+		}
+    });
 	}
 	
