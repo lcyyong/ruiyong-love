@@ -52,7 +52,7 @@
 		});
 		
 		$.post('/index', myform.serialize(), function(data) {
-			$('#result1').html("Hello 1, " + data.name);
+			$('#result').html("Hello 1, " + data.name);
 		});
 		/*
 		$.ajax({
