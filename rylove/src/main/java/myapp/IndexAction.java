@@ -27,7 +27,7 @@ public class IndexAction extends HttpServlet {
       throws IOException {
 		  
 	String fullName = (String)req.getParameter("fullName");
-    System.out.println("---->" + fullName);
+    System.out.println("----> get : " + fullName);
 	
 	resp.setContentType("text/plain");
     resp.getWriter().println("{ \"name\": "+fullName+" }");
@@ -38,7 +38,7 @@ public class IndexAction extends HttpServlet {
       throws IOException {
 		  
 	String fullName = (String)req.getParameter("fullName");
-    System.out.println("---->" + fullName);
+    System.out.println("----> post : " + fullName);
 	
 	resp.setContentType("text/plain");
     resp.getWriter().println("{ \"name\": "+fullName+" }");
