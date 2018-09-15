@@ -41,6 +41,6 @@ public class IndexAction extends HttpServlet {
     System.out.println("----> post : " + fullName);
 	
 	resp.setContentType("text/plain");
-    resp.getWriter().println("{ \"name\": "+fullName+" }");
+    resp.getWriter().println("{ \"name\": \""+fullName+"\" }");
   }
 }
