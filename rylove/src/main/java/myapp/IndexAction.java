@@ -16,10 +16,24 @@
 
 package myapp;
 
+import java.io.ByteArrayInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.Properties;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -43,18 +57,83 @@ public class IndexAction extends HttpServlet {
 	String fullName = (String)req.getParameter("fullName");
     System.out.println("----> post : " + fullName);
 	
-    try {
-	    FileWriter write = new FileWriter("/src/main/webapp/WEB-INF/data/rsvp.txt", true);
-	    
-	    PrintWriter print_line = new PrintWriter(write);
-	    
-	    print_line.println("name : " + fullName);
-	    print_line.close();
-    }catch(IOException e) {
-    	e.printStackTrace();
-    }
-    
-	resp.setContentType("text/plain");
+    resp.setContentType("text/plain");
     resp.getWriter().println("{ \"name\": \""+fullName+"\" }");
+    
+    String type = fullName;
+    if (type != null && type.equals("multipart")) {
+      resp.getWriter().print("Sending HTML email with attachment.");
+      sendMultipartMail();
+    } else {
+      resp.getWriter().print("Sending simple email.");
+      sendSimpleMail();
+    }
   }
+
+  private void sendSimpleMail() {
+    // [START simple_example]
+    Properties props = new Properties();
+    Session session = Session.getDefaultInstance(props, null);
+
+    try {
+      Message msg = new MimeMessage(session);
+      msg.setFrom(new InternetAddress("admin@example.com", "ruiyong@google.com"));
+      msg.addRecipient(Message.RecipientType.TO,
+                       new InternetAddress("lcyyong@live.cn", "Hi RY"));
+      msg.setSubject("Got new Participant!");
+      msg.setText("wow");
+      Transport.send(msg);
+    } catch (AddressException e) {
+      // ...
+    } catch (MessagingException e) {
+      // ...
+    } catch (UnsupportedEncodingException e) {
+      // ...
+    }
+    // [END simple_example]
+  }
+
+  private void sendMultipartMail() {
+    Properties props = new Properties();
+    Session session = Session.getDefaultInstance(props, null);
+
+    String msgBody = "...";
+
+    try {
+      Message msg = new MimeMessage(session);
+      msg.setFrom(new InternetAddress("admin@example.com", "ruiyong@google.com"));
+      msg.addRecipient(Message.RecipientType.TO,
+                       new InternetAddress("lcyyong@live.cn\", \"Hi RY"));
+      msg.setSubject("Got new Participant with Attachment!");
+      msg.setText(msgBody);
+
+      // [START multipart_example]
+      String htmlBody = "";          // ...
+      byte[] attachmentData = null;  // ...
+      Multipart mp = new MimeMultipart();
+
+      MimeBodyPart htmlPart = new MimeBodyPart();
+      htmlPart.setContent(htmlBody, "text/html");
+      mp.addBodyPart(htmlPart);
+
+      MimeBodyPart attachment = new MimeBodyPart();
+      InputStream attachmentDataStream = new ByteArrayInputStream(attachmentData);
+      attachment.setFileName("manual.pdf");
+      attachment.setContent(attachmentDataStream, "application/pdf");
+      mp.addBodyPart(attachment);
+
+      msg.setContent(mp);
+      // [END multipart_example]
+
+      Transport.send(msg);
+
+    } catch (AddressException e) {
+      // ...
+    } catch (MessagingException e) {
+      // ...
+    } catch (UnsupportedEncodingException e) {
+      // ...
+    }
+  }
+   
 }
