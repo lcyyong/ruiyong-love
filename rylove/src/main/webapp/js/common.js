@@ -69,6 +69,7 @@
 		
 		if(check()){
 			$.post('/index', myform.serialize(), function(data) {
+				alert("data" + data);
 				alert("Thanks! ");
 			});
 		}
@@ -83,16 +84,27 @@
 	}
 	var currentPartnerNo = 0;
 	function check(){
-		var isGotEmpty = false;
+		var isPartnerEmpty = false;
 		$( ".partName" ).each(function() {
 			if($(this).val() == ""){
-				isGotEmpty = true;
+				isPartnerEmpty = true;
 			}
 		});
-		if(isGotEmpty){
+		if(isPartnerEmpty){
 			alert("One of the Partner name is empty!");
 			return false;
 		}
+		
+		if($("#fullName").val() == ""){
+			alert("Please fill in Your Name!");
+			return false;
+		}
+		
+		if($("#contactNo").val() == ""){
+			alert("Please fill in Contact No!");
+			return false;
+		}
+		
 		return true;
 	}
 	
