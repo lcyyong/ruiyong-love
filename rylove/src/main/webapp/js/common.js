@@ -69,7 +69,7 @@
 		
 		if(check()){
 			$.post('/index', myform.serialize(), function(data) {
-				
+				alert("Thanks! ");
 			});
 		}
 		
