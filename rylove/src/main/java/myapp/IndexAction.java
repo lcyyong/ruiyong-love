@@ -55,22 +55,44 @@ public class IndexAction extends HttpServlet {
       throws IOException {
 		  
 	String fullName = (String)req.getParameter("fullName");
-    System.out.println("----> post : " + fullName);
+	String contactNo = (String)req.getParameter("contactNo");
+	String guessOf = (String)req.getParameter("guessOf");
+	String choiceMenu = (String)req.getParameter("choiceMenu");
+	String partnersNoStr = (String)req.getParameter("partnersNo");
 	
-    resp.setContentType("text/plain");
+	String body = "";
+	body += " \nFull Name : " + fullName;
+	body += " \nContact No : " + contactNo;
+	body += " \nGuess Of : " + guessOf;
+	body += " \nMenu : " + choiceMenu;
+	body += " \nPartner No : " + partnersNo;
+	
+	double partnersNo = 0;
+	try {
+		partnersNo = Double.parseDouble(partnersNo);
+	}catch(Exception e) {
+		e.printStackTrace();
+	}
+	
+	for(int i=0; i<partnersNo; i++) {
+		String pFullName = (String)req.getParameter("pFullName"+i);
+		body += " \nPartner Name : " + pFullName;
+	}
+	
+	resp.setContentType("text/plain");
     resp.getWriter().println("{ \"name\": \""+fullName+"\" }");
     
-    String type = fullName;
+    String type = (String)req.getParameter("type");
     if (type != null && type.equals("multipart")) {
       resp.getWriter().print("Sending HTML email with attachment.");
       sendMultipartMail();
     } else {
       resp.getWriter().print("Sending simple email.");
-      sendSimpleMail();
+      sendSimpleMail(body);
     }
   }
 
-  private void sendSimpleMail() {
+  private void sendSimpleMail(String body) {
     // [START simple_example]
     Properties props = new Properties();
     Session session = Session.getDefaultInstance(props, null);
@@ -81,7 +103,7 @@ public class IndexAction extends HttpServlet {
       msg.addRecipient(Message.RecipientType.TO,
                        new InternetAddress("lcyyong2@gmail.com", "Hi RY"));
       msg.setSubject("Got new Participant!");
-      msg.setText("wow");
+      msg.setText(body);
       Transport.send(msg);
       System.out.println("Successfull Delivery.");
     } catch (AddressException e) {
