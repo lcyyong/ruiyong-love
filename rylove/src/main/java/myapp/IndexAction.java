@@ -83,6 +83,7 @@ public class IndexAction extends HttpServlet {
       msg.setSubject("Got new Participant!");
       msg.setText("wow");
       Transport.send(msg);
+      System.out.println("Successfull Delivery.");
     } catch (AddressException e) {
       // ...
     	System.out.println("====>>>error : " + e.getMessage());
