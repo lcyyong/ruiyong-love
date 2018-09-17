@@ -79,7 +79,7 @@ public class IndexAction extends HttpServlet {
       Message msg = new MimeMessage(session);
       msg.setFrom(new InternetAddress("ruiyong@ruiyonglove.appspotmail.com", "lcyyong2@gmail.com"));
       msg.addRecipient(Message.RecipientType.TO,
-                       new InternetAddress("lcyyong@live.cn", "Hi RY"));
+                       new InternetAddress("lcyyong2@gmail.com", "Hi RY"));
       msg.setSubject("Got new Participant!");
       msg.setText("wow");
       Transport.send(msg);
@@ -106,7 +106,7 @@ public class IndexAction extends HttpServlet {
       Message msg = new MimeMessage(session);
       msg.setFrom(new InternetAddress("ruiyong@ruiyonglove.appspotmail.com", "lcyyong2@gmail.com"));
       msg.addRecipient(Message.RecipientType.TO,
-                       new InternetAddress("lcyyong@live.cn\", \"Hi RY"));
+                       new InternetAddress("lcyyong2@gmail.com", \"Hi RY"));
       msg.setSubject("Got new Participant with Attachment!");
       msg.setText(msgBody);
 
