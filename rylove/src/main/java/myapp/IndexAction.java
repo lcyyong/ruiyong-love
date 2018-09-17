@@ -85,12 +85,15 @@ public class IndexAction extends HttpServlet {
       Transport.send(msg);
     } catch (AddressException e) {
       // ...
+    	System.out.println("====>>>error : " + e.getMessage());
     	e.printStackTrace();
     } catch (MessagingException e) {
       // ...
+    	System.out.println("====>>>error : " + e.getMessage());
     	e.printStackTrace();
     } catch (UnsupportedEncodingException e) {
       // ...
+    	System.out.println("====>>>error : " + e.getMessage());
     	e.printStackTrace();
     }
     // [END simple_example]
