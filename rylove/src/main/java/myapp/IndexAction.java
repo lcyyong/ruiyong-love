@@ -69,7 +69,7 @@ public class IndexAction extends HttpServlet {
 	
 	double partnersNo = 0;
 	try {
-		partnersNo = Double.parseDouble(partnersNo);
+		partnersNo = Double.parseDouble(partnersNoStr);
 	}catch(Exception e) {
 		e.printStackTrace();
 	}
