@@ -65,7 +65,7 @@ public class IndexAction extends HttpServlet {
 	body += " \nContact No : " + contactNo;
 	body += " \nGuess Of : " + guessOf;
 	body += " \nMenu : " + choiceMenu;
-	body += " \nPartner No : " + partnersNo;
+	body += " \nPartner No : " + partnersNoStr;
 	
 	double partnersNo = 0;
 	try {
