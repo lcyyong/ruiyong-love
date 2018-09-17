@@ -44,7 +44,8 @@ public class IndexAction extends HttpServlet {
     System.out.println("----> post : " + fullName);
 	
     try {
-	    FileWriter write = new FileWriter("src/main/webapp/WEB-INF/data/rsvp.txt", true);
+	    FileWriter write = new FileWriter("/src/main/webapp/WEB-INF/data/rsvp.txt", true);
+	    
 	    PrintWriter print_line = new PrintWriter(write);
 	    
 	    print_line.println("name : " + fullName);
