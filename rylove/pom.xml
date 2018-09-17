@@ -88,7 +88,7 @@
 		    <scope>system</scope>
 		    <version>${appengine.target.version}</version>
 		    <type>jar</type>
-		    <systemPath>${basedir}/webapp/WEB-INF/lib/mail.jar</systemPath>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/mail.jar</systemPath>
 		</dependency>
 		<dependency>
 		    <groupId>activation</groupId>
@@ -96,7 +96,7 @@
 		    <scope>system</scope>
 		    <version>${appengine.target.version}</version>
 		    <type>jar</type>
-		    <systemPath>${basedir}/webapp/WEB-INF/lib/activation.jar</systemPath>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/activation.jar</systemPath>
 		</dependency>
   </dependencies>
     
