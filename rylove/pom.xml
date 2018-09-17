@@ -82,6 +82,22 @@
       <version>${appengine.target.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+		    <groupId>mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <scope>system</scope>
+		    <version>${appengine.target.version}</version>
+		    <type>jar</type>
+		    <systemPath>${basedir}/webapp/WEB-INF/lib/mail.jar</systemPath>
+		</dependency>
+		<dependency>
+		    <groupId>activation</groupId>
+		    <artifactId>activation</artifactId>
+		    <scope>system</scope>
+		    <version>${appengine.target.version}</version>
+		    <type>jar</type>
+		    <systemPath>${basedir}/webapp/WEB-INF/lib/activation.jar</systemPath>
+		</dependency>
   </dependencies>
     
   <build>
