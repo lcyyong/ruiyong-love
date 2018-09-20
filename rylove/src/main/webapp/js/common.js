@@ -69,7 +69,6 @@
 		
 		if(check()){
 			$.post('/index', myform.serialize(), function(data) {
-				alert("data" + data);
 				alert("Thanks! ");
 			});
 		}
