@@ -62,6 +62,7 @@
 			$('#partnerNameDiv').html(appendStr);
 		});
 		
+		generateGalleryView();
     });
 	
 	function submitRsvp(){
@@ -111,3 +112,38 @@
 		partnerName[no] = value;
 	}
 	
+	function generateGalleryView(){
+		var imgSrc = [
+			"img/wedding/1.JPG?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+			"img/wedding/2.JPG?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+			"img/wedding/3.JPG?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+			"img/wedding/4.JPG?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+			"img/wedding/5.JPG?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+			"img/wedding/6.JPG?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+			"img/wedding/7.JPG?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+			"img/wedding/8.JPG?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+			"img/wedding/9.JPG?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+			"img/wedding/10.JPG?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+			"img/wedding/11.JPG?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+			"img/wedding/12.JPG?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+			"img/wedding/13.JPG?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+			"img/wedding/14.JPG?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+			"img/wedding/15.JPG?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+			"img/wedding/16.JPG?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+			"img/wedding/17.JPG?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+			"img/wedding/18.JPG?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+			"img/wedding/19.JPG?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+			"img/wedding/20.JPG?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+		];
+		
+		$('#galleryDiv').html("");
+		var content = "";
+		for (i=0;i<imgSrc.length;i++){
+				content+='<div class="col-lg-2 col-md-3 col-xs-4 thumb">';
+				content+='		<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="" data-image="'+imgSrc[i]+'" data-target="#image-gallery">';
+				content+='			<img class="img-thumbnail" src="'+imgSrc[i]+'" alt="Another alt text">';
+				content+='		</a>';
+				content+='	</div>';
+		}
+		$('#galleryDiv').html(content);
+	}
