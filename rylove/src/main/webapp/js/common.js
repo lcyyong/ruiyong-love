@@ -139,7 +139,7 @@
 		$('#galleryDiv').html("");
 		var content = "";
 		for (i=0;i<imgSrc.length;i++){
-				content+='<div class="col-lg-2 col-md-3 col-xs-4 thumb">';
+				content+='<div class="col-lg-2 col-md-3 col-xs-4">';
 				content+='		<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="" data-image="'+imgSrc[i]+'" data-target="#image-gallery">';
 				content+='			<img class="img-thumbnail" src="'+imgSrc[i]+'" alt="Another alt text">';
 				content+='		</a>';
